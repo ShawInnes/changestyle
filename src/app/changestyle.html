@@ -1,34 +1,35 @@
 <router-outlet></router-outlet>
 
-<div class="container">
-  <h1>{{data.title}}...</h1>
+<nav class="navbar navbar-inverse navbar-fixed-top p-x">
+  <div class="row">
+    <div class="col-md-4 text-xs-left"><h4>Conserver</h4></div>
+    <div class="col-md-4 text-xs-center"><h4>Pragmatist</h4></div>
+    <div class="col-md-4 text-xs-right"><h4>Originator</h4></div>
+  </div>
 
-  <h3>Conserver: {{conserver}}</h3>
-  <h3>Originator: {{originator}}</h3>
-  <h3>Final Score: {{finalScore}}</h3>
+  <div class="row">
+    <div class="progress col-md-12">
+      <div class="progress-bar progress-bar-primary" style="width: {{progressBar}}%"></div>
+      <div class="progress-bar progress-bar-success" style="width: {{100.0 - progressBar}}%"></div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h3>{{data.title}}...</h3>
 
   <div *ngFor="#row of data.questions">
-    <div class="row">
-      <div class="col-md-2">{{row.number}}</div>
+    <div class="row p-b">
       <div class="col-md-4 text-xs-left">{{row.a}}</div>
+      <div class="col-md-4 text-xs-center">
+        <div class="btn-group">
+          <button class="btn btn-primary p-x" [ngClass]="row.selected == 0 ? 'active' : ''" (click)="process(row, 0)"><i class="icon icon-vinyl"></i></button>
+          <button class="btn btn-primary p-x" [ngClass]="row.selected == 1 ? 'active' : ''" (click)="process(row, 1)"><i class="icon icon-vinyl"></i></button>
+          <button class="btn btn-primary p-x" [ngClass]="row.selected == 2 ? 'active' : ''" (click)="process(row, 2)"><i class="icon icon-vinyl"></i></button>
+          <button class="btn btn-primary p-x" [ngClass]="row.selected == 3 ? 'active' : ''" (click)="process(row, 3)"><i class="icon icon-vinyl"></i></button>
+        </div>
+      </div>
       <div class="col-md-4 text-xs-right">{{row.b}}</div>
     </div>
-
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-2 text-xs-center">
-        <button class="btn btn-sm btn-primary-outline" [ngClass]="row.selected == 0 ? 'active' : ''" (click)="process(row, 0)">Select</button>
-      </div>
-      <div class="col-md-2 text-xs-center">
-        <button class="btn btn-sm btn-primary-outline" [ngClass]="row.selected == 1 ? 'active' : ''" (click)="process(row, 1)">Select</button>
-      </div>
-      <div class="col-md-2 text-xs-center">
-        <button class="btn btn-sm btn-primary-outline" [ngClass]="row.selected == 2 ? 'active' : ''" (click)="process(row, 2)">Select</button>
-      </div>
-      <div class="col-md-2 text-xs-center">
-        <button class="btn btn-sm btn-primary-outline" [ngClass]="row.selected == 3 ? 'active' : ''" (click)="process(row, 3)">Select</button>
-      </div>
-    </div>
-    <hr />
   </div>
 </div>

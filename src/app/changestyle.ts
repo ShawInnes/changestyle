@@ -153,6 +153,7 @@ export class ChangestyleApp {
   public originator: number;
   public conserver: number;
   public finalScore: number;
+  public progressBar: number = 50;
 
   process(row, index) {
     row.selected = index;
@@ -185,6 +186,7 @@ export class ChangestyleApp {
 
     this.conserver = conserver;
     this.originator = originator;
-    this.finalScore = Math.abs(conserver - originator);
+    this.finalScore = Math.abs(originator - conserver);
+    this.progressBar = 50.0 + ((originator - conserver) / 60.0) * 100.0;
   }
 }
