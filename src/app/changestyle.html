@@ -1,5 +1,34 @@
-<p>
-  changestyle Works!
-</p>
-
 <router-outlet></router-outlet>
+
+<div class="container">
+  <h1>{{data.title}}...</h1>
+
+  <h3>Conserver: {{conserver}}</h3>
+  <h3>Originator: {{originator}}</h3>
+  <h3>Final Score: {{finalScore}}</h3>
+
+  <div *ngFor="#row of data.questions">
+    <div class="row">
+      <div class="col-md-2">{{row.number}}</div>
+      <div class="col-md-4 text-xs-left">{{row.a}}</div>
+      <div class="col-md-4 text-xs-right">{{row.b}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-2 text-xs-center">
+        <button class="btn btn-sm btn-primary-outline" [ngClass]="row.selected == 0 ? 'active' : ''" (click)="process(row, 0)">Select</button>
+      </div>
+      <div class="col-md-2 text-xs-center">
+        <button class="btn btn-sm btn-primary-outline" [ngClass]="row.selected == 1 ? 'active' : ''" (click)="process(row, 1)">Select</button>
+      </div>
+      <div class="col-md-2 text-xs-center">
+        <button class="btn btn-sm btn-primary-outline" [ngClass]="row.selected == 2 ? 'active' : ''" (click)="process(row, 2)">Select</button>
+      </div>
+      <div class="col-md-2 text-xs-center">
+        <button class="btn btn-sm btn-primary-outline" [ngClass]="row.selected == 3 ? 'active' : ''" (click)="process(row, 3)">Select</button>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
